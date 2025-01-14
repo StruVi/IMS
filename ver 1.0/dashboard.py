@@ -3,7 +3,7 @@ from PIL import Image,ImageTk #pip install pillow
 class IMS:
     def __init__(self,root):
         self.root=root
-        self.root.geometry("1280x720+0+0")
+        self.root.geometry("1920x1080+0+0")
         self.root.title("Inventory Management System | Developed by Aswin Vibushan")
 
         #====title====
@@ -11,7 +11,7 @@ class IMS:
         title=Label(self.root,text="Inventory Management System",image=self.icon_title,compound=RIGHT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx="20").place(x=0,y=0,relwidth=1,height=70)
 
         #====btn_logout====
-        btm_logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow").place(x=1100,y=10)
+        btm_logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow").place(x=1100,y=10,height=40,width=150)
 
 
 root=Tk()
