@@ -1,4 +1,5 @@
 from tkinter import*
+from PIL import Image,ImageTk #pip install pillow
 class IMS:
     def __init__(self,root):
         self.root=root
