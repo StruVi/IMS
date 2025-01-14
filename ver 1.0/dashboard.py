@@ -5,6 +5,9 @@ class IMS:
         self.root.geometry("1280x720+0+0")
         self.root.title("Inventory Management System | Developed by Aswin Vibushan")
 
+        #====title====
+        title=Label(self.root,text="Inventory Management System",font=("times new roman",40,"bold")).place(x=0,y=0,relwidth=1,height=70)
+
 root=Tk()
 obj=IMS(root)
 root.mainloop()
