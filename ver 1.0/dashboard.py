@@ -4,7 +4,7 @@ class IMS:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1920x1080+0+0")
-        self.root.title("Inventory Management System | Developed by Aswin Vibushan")
+        self.root.title("Inventory Management System | Developed by 6cyn")
         self.root.config(bg="white")
 
         #====title====
@@ -44,6 +44,8 @@ class IMS:
         btn_sales=Button(LeftMenu,text="Sales",image=self.icon5,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_exit=Button(LeftMenu,text="Exit",image=self.icon6,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
 
+        #====Footer====
+        lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn",font=("times new roman",15),bg="#4d636d",fg="white").place(x=0,y=70,relwidth=1,height=30)
 
 root=Tk()
 obj=IMS(root)
