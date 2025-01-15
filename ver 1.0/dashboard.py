@@ -47,13 +47,13 @@ class IMS:
         #====Content====
         self.lbl_employee=Label(self.root,text="Total Employees\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
         
-        self.lbl_supplier=Label(self.root,text="Total Supplier\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=120,width=300,height=150)
+        self.lbl_supplier=Label(self.root,text="Total Supplier\n[0]",bg="#ff5722",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=120,width=300,height=150)
         
-        self.lbl_category=Label(self.root,text="Total Categories\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=1000,y=120,width=300,height=150)
+        self.lbl_category=Label(self.root,text="Total Categories\n[0]",bg="#009688",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=1000,y=120,width=300,height=150)
         
-        self.lbl_product=Label(self.root,text="Total Products\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=300,width=300,height=150)
+        self.lbl_product=Label(self.root,text="Total Products\n[0]",bg="#607d8b",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=300,width=300,height=150)
         
-        self.lbl_sales=Label(self.root,text="Total Sales\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=300,width=300,height=150)
+        self.lbl_sales=Label(self.root,text="Total Sales\n[0]",bg="#ffc107",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=300,width=300,height=150)
         
         #====Footer====
         lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn\nFor any Technical Issues Contact: 9790326149",font=("times new roman",15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
