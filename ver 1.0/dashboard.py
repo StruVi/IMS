@@ -47,7 +47,7 @@ class IMS:
         #====Content====
         self.lbl_employee=Label(self.root,text="Total Employees\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
         
-        self.lbl_supplier=Label(self.root,text="Total Supplier\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
+        self.lbl_supplier=Label(self.root,text="Total Supplier\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=120,width=300,height=150)
         
         self.lbl_category=Label(self.root,text="Total Categories\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
         
