@@ -44,6 +44,11 @@ class IMS:
         btn_sales=Button(LeftMenu,text="Sales",image=self.icon5,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_exit=Button(LeftMenu,text="Exit",image=self.icon6,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
 
+        #====Content====
+        self.lbl_employee=Label(self.root,text="Total Employees\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
+
+
+
         #====Footer====
         lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn\nFor any Technical Issues Contact: 9790326149",font=("times new roman",15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
 
