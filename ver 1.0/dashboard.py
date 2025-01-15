@@ -20,10 +20,13 @@ class IMS:
 
         #====Menu=====
         self.Menu_icon=Image.open("images\IM-menu.png")
+        self.Menu_icon=self.Menu_icon.resize((200,200),Image.ANTIALIAS)  
+        self.Menu_icon=ImageTk.PhotoImage(self.Menu_icon)
         LeftMenu=Frame(self.root,bd=2,relief=RIDGE,bg="white")
         LeftMenu.place(x=0,y=102,width=200,height=700)
 
-
+        lbl_MenuIcon=Label(LeftMenu,image=self.Menu_icon)
+        lbl_MenuIcon.pack(side=TOP,fill=X)
 root=Tk()
 obj=IMS(root)
 root.mainloop()
