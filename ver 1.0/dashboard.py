@@ -29,12 +29,12 @@ class IMS:
         lbl_MenuIcon=Label(LeftMenu,image=self.Menu_icon)
         lbl_MenuIcon.pack(side=TOP,fill=X)
 
-        self.icon1=PhotoImage(file="images/employee.png")
-        self.icon2=PhotoImage(file="images/supplier.png")
-        self.icon3=PhotoImage(file="images/category.png")
-        self.icon4=PhotoImage(file="images/product.png")
-        self.icon5=PhotoImage(file="images/sale.png")
-        self.icon6=PhotoImage(file="images/exit.png")
+        self.icon1=PhotoImage(file="images/menu icons/employee.png")
+        self.icon2=PhotoImage(file="images/menu icons/supplier.png")
+        self.icon3=PhotoImage(file="images/menu icons/category.png")
+        self.icon4=PhotoImage(file="images/menu icons/product.png")
+        self.icon5=PhotoImage(file="images/menu icons/sale.png")
+        self.icon6=PhotoImage(file="images/menu icons/exit.png")
 
         lbl_menu=Label(LeftMenu,text="Menu",font=("times new roman",20),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",image=self.icon1,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
