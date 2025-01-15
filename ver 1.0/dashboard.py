@@ -18,7 +18,7 @@ class IMS:
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
         #====Menu=====
         LeftMenu=Frame(self.root,bd=2,relief=RIDGE)
-        LeftMenu.place(x=0,y=102,width=200,height=565)
+        LeftMenu.place(x=0,y=102,width=200,height=700)
 
 
 root=Tk()
