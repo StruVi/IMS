@@ -53,7 +53,7 @@ class IMS:
         
         self.lbl_product=Label(self.root,text="Total Products\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=300,width=300,height=150)
         
-        self.lbl_sales=Label(self.root,text="Total Sales\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=300,y=120,width=300,height=150)
+        self.lbl_sales=Label(self.root,text="Total Sales\n[0]",bg="#33bbf9",fg="white",bd=5,relief=RIDGE,font=("goudy old style",20,"bold")).place(x=650,y=300,width=300,height=150)
         
         #====Footer====
         lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn\nFor any Technical Issues Contact: 9790326149",font=("times new roman",15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
