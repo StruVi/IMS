@@ -13,7 +13,10 @@ class employeeClass:
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
         SearchFrame.place(x=250,y=20,width=600,height=70)
 
-        
+        #====options======
+        cmb_search=ttk.Combobox(SearchFrame,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER)
+        cmb_search.place(x=10,y=10,width=180)
+
 
 
 
