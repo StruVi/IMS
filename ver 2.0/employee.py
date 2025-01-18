@@ -9,6 +9,6 @@ class employeeClass:
 
 
 if __name__=="__main__":
-root=Tk()
-obj=employeeClass(root)
-root.mainloop()
+    root=Tk()
+    obj=employeeClass(root)
+    root.mainloop()

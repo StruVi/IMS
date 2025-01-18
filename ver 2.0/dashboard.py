@@ -1,5 +1,6 @@
 from tkinter import*
 from PIL import Image,ImageTk #pip install pillow
+from employee import employeeClass
 class IMS:
     def __init__(self,root):
         self.root=root
@@ -37,7 +38,8 @@ class IMS:
         self.icon6=PhotoImage(file="images/menu icons/exit.png")
 
         lbl_menu=Label(LeftMenu,text="Menu",font=("times new roman",20),bg="#009688").pack(side=TOP,fill=X)
-        btn_employee=Button(LeftMenu,text="Employee",image=self.icon1,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
+
+        btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon1,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier=Button(LeftMenu,text="Supplier",image=self.icon2,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_category=Button(LeftMenu,text="Category",image=self.icon3,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_product=Button(LeftMenu,text="Products",image=self.icon4,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
@@ -58,7 +60,15 @@ class IMS:
         #====Footer====
         lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn\nFor any Technical Issues Contact: 9790326149",font=("times new roman",15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
 
+        #==============Functions================
+        def employee(self):
+            self.new_win=Toplevel(self.root)
+            self.new_obj=employeeClass(self.new_win)
+
+
+
+
 if __name__=="__main__":
-root=Tk()
-obj=IMS(root)
-root.mainloop()
+    root=Tk()
+    obj=IMS(root)
+    root.mainloop()
