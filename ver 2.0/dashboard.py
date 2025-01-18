@@ -58,6 +58,7 @@ class IMS:
         #====Footer====
         lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by 6cyn\nFor any Technical Issues Contact: 9790326149",font=("times new roman",15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
 
+if __name__=="__main__":
 root=Tk()
 obj=IMS(root)
 root.mainloop()
