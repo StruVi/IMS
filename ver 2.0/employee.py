@@ -21,7 +21,7 @@ class employeeClass:
         txt_search=Entry(SearchFrame,font=("goudy old style",15),bg="lightyellow")
         txt_search.place(x=200,y=10,width=180)
 
-        btn_search=Button(SearchFrame,text="Search",font=("goudy old style",15),bg="#4caf50",fg="white")
+        btn_search=Button(SearchFrame,text="Search",font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2")
         btn_search.place(x=400,y=7,width=180,height=32)
 
 
