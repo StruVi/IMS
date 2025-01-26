@@ -15,13 +15,14 @@ class employeeClass:
 
         #====options======
         cmb_search=ttk.Combobox(SearchFrame,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER,font=("goudy old style",15))
-        cmb_search.place(x=10,y=10,width=130,height=30)
+        cmb_search.place(x=10,y=10,width=180)
         cmb_search.current(0)
 
         txt_search=Entry(SearchFrame,font=("goudy old style",15),bg="lightyellow")
-        txt_search.place(x=150,y=10,width=200,height=30)  
+        txt_search.place(x=200,y=10,width=180)
 
-
+        btn_search=Button(SearchFrame,text="Search",font=("goudy old style",15),bg="#4caf50",fg="white")
+        btn_search.place(x=400,y=7,width=180,height=32)
 
 
 
