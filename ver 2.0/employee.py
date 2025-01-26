@@ -25,8 +25,8 @@ class employeeClass:
         btn_search.place(x=400,y=7,width=180,height=32)
 
 
-
-
+        #====Tileframe====
+        title=Label(self.root,text="Employee Details",font=("goudy old style",20),bg="#0f4d7d",fg="white").place(x=0,y=90,width=1100,height=35)
 
 
 if __name__=="__main__":
