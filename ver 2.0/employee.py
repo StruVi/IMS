@@ -18,6 +18,10 @@ class employeeClass:
         cmb_search.place(x=10,y=10,width=180)
         cmb_search=current(0)
 
+        txt_search=Entry(SearchFrame,font=("goudy old style",15),bg="lightyellow").place(x=200,y=10,width=180)
+
+        
+
 
 
 
