@@ -14,9 +14,9 @@ class employeeClass:
         SearchFrame.place(x=250,y=20,width=600,height=70)
 
         #====options======
-        cmb_search=ttk.Combobox(SearchFrame,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER)
+        cmb_search=ttk.Combobox(SearchFrame,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER,font=("goudy old style",15))
         cmb_search.place(x=10,y=10,width=180)
-
+        cmb_search=current(0)
 
 
 
