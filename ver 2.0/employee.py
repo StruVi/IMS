@@ -8,17 +8,33 @@ class employeeClass:
         self.root.title("Inventory Management System | Developed by 6cyn")
         self.root.config(bg="white")
         self.root.focus_force()
+        
+        #=======================
+        #All Variables
+        self.var_searchby=StringVar()
+        self.var_searchtxt=StringVar()
+
+        self.var_emp_id=StringVar()
+        self.var_name=StringVar()
+        self.var_email=StringVar()
+        self.var_address=StringVar()
+        self.var_gender=StringVar()
+        self.var_contact=StringVar()
+        self.var_dob=StringVar()
+        self.var_doj=StringVar()
+        self.var_password=StringVar()
+        self.var_utype=StringVar()
 
         #====SearchFrame====
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
         SearchFrame.place(x=250,y=20,width=600,height=70)
 
         #====options======
-        cmb_search=ttk.Combobox(SearchFrame,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER,font=("goudy old style",15))
+        cmb_search=ttk.Combobox(SearchFrame,textvariable=self.var_searchby,values=("Select","Employee ID","Phone No","Name"),state="readonly",justify=CENTER,font=("goudy old style",15))
         cmb_search.place(x=10,y=10,width=180)
         cmb_search.current(0)
 
-        txt_search=Entry(SearchFrame,font=("goudy old style",15),bg="lightyellow")
+        txt_search=Entry(SearchFrame,textvariable=self.var_searchtxt,font=("goudy old style",15),bg="lightyellow")
         txt_search.place(x=200,y=10,width=180)
 
         btn_search=Button(SearchFrame,text="Search",font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2")
@@ -28,6 +44,8 @@ class employeeClass:
         #====Tileframe====
         title=Label(self.root,text="Employee Details",font=("goudy old style",20),bg="#0f4d7d",fg="white").place(x=0,y=90,width=1100,height=35)
 
+        #====ContentFrame====
+        
 
 if __name__=="__main__":
     root=Tk()
