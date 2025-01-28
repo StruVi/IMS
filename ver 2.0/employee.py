@@ -144,10 +144,15 @@ class employeeClass:
     def add(self):
         con=sqlite3.connect(database=r"ims.db")
         cur=con.cursor()
-        try:
-            cur.execute("insert into employee (emp_id,name
 
-        except
+        try:
+            if self.var_emp_id.get()=="":
+                messagebox.showerror("Error","Employee ID is be required",parent=self.root)
+
+        Exception as ex:
+            messagebox.showerror("Error",f"Error due to: {str(ex)}")
+        
+        
 
 
 
