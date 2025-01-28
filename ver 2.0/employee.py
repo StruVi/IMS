@@ -106,6 +106,40 @@ class employeeClass:
         scroll_x=Scrollbar(emp_frame,orient=HORIZONTAL)
         scroll_y=Scrollbar(emp_frame,orient=VERTICAL)
 
+        self.employee_table=ttk.Treeview(emp_frame,columns=("EMP_ID","Name","Email","Gender","Contact","D.O.B","D.O.J","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        scroll_x.pack(side=BOTTOM,fill=X)
+        scroll_y.pack(side=RIGHT,fill=Y)
+        scroll_x.config(command=self.employee_table.xview)
+        scroll_y.config(command=self.employee_table.yview)
+        self.employee_table.heading("EMP_ID",text="Emp ID")
+        self.employee_table.heading("Name",text="Name")
+        self.employee_table.heading("Email",text="Email")
+        self.employee_table.heading("Gender",text="Gender")
+        self.employee_table.heading("Contact",text="Contact")
+        self.employee_table.heading("D.O.B",text="D.O.B")
+        self.employee_table.heading("D.O.J",text="D.O.J")
+        self.employee_table.heading("Password",text="Password")
+        self.employee_table.heading("User-type",text="User-type")
+        self.employee_table.heading("Address",text="Address")
+        self.employee_table.heading("Salary",text="Salary")
+
+        self.employee_table["show"]="headings"
+
+        self.employee_table.column("EMP_ID",width=100)
+        self.employee_table.column("Name",width=100)
+        self.employee_table.column("Email",width=100)
+        self.employee_table.column("Gender",width=100)
+        self.employee_table.column("Contact",width=100)
+        self.employee_table.column("D.O.B",width=100)
+        self.employee_table.column("D.O.J",width=100)
+        self.employee_table.column("Password",width=100)
+        self.employee_table.column("User-type",width=100)
+        self.employee_table.column("Address",width=100)
+        self.employee_table.column("Salary",width=100)
+        
+        self.employee_table.pack(fill=BOTH,expand=1)
+              
+    
 if __name__=="__main__":
     root=Tk()
     obj=employeeClass(root)
