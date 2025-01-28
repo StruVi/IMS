@@ -112,7 +112,7 @@ class employeeClass:
         scroll_y.pack(side=RIGHT,fill=Y)
         scroll_x.config(command=self.employee_table.xview)
         scroll_y.config(command=self.employee_table.yview)
-        self.employee_table.heading("eid",text="Emp ID")
+        self.employee_table.heading("eid",text="eid")
         self.employee_table.heading("Name",text="Name")
         self.employee_table.heading("Email",text="Email")
         self.employee_table.heading("Gender",text="Gender")
@@ -145,41 +145,38 @@ class employeeClass:
         con=sqlite3.connect(database=r"ims.db")
         cur=con.cursor()
 
+        # Check if Employee ID already exists
         try:
             if self.var_eid.get()=="":
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
-                cur.execute("select * from employee where eid=?",(self.var_eid.get(),))
-                row=cur.fetchone()
-                if row!=None:
-                    messagebox.showerror("Error","Employee ID already present, try different",parent=self.root)
-                else:
-                    cur.execute("Insert into employee(eid,Name,Email,Gender,Contact,D.O.B,D.O.J,Password,Usertype,Address,Salary) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
-                            self.var_eid.get(),
-                            self.var_name.get(),
-                            self.var_email.get(),
-                            self.var_gender.get(),
-                            self.var_contact.get(),
-                            self.var_dob.get(),
-                            self.var_doj.get(),
-                            self.var_password.get(),
-                            self.var_utype.get(),
-
-                            self.txt_address.get("1.0",END),
-
-                            self.var_salary.get()
-                    ))
-                    con.commit()
-                    messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
+                # Insert employee data into the database
+                cur.execute
+                (
+                    """INSERT INTO employee (eid, Name, Email, Gender, Contact, "D.O.B", "D.O.J", Password, Usertype, Address, Salary) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                    (
+                        self.var_eid.get(),
+                        self.var_name.get(),
+                        self.var_email.get(),
+                        self.var_gender.get(),
+                        self.var_contact.get(),
+                        self.var_dob.get(),
+                        self.var_doj.get(),
+                        self.var_password.get(),
+                        self.var_utype.get(),
+                        self.txt_address.get("1.0", END).strip(),
+                        self.var_salary.get(),
+                    ),
+                )
+                con.commit()
+                self.show()  # Refresh table
+                messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
                     
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
         
         
-
-
-
-
 if __name__=="__main__":
     root=Tk()
     obj=employeeClass(root)
