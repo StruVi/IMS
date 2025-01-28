@@ -5,7 +5,7 @@ class employeeClass:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
-        self.root.title("Inventory Management System | Developed by 6cyn")
+        self.root.title("Employee Database")
         self.root.config(bg="white")
         self.root.focus_force()
         
@@ -71,6 +71,20 @@ class employeeClass:
         txt_dob=Entry(self.root,textvariable=self.var_dob,font=("goudy old style",15),bg="white").place(x=500,y=190,width=180)
         txt_doj=Entry(self.root,textvariable=self.var_doj,font=("goudy old style",15),bg="lightyellow").place(x=850,y=190,width=180)
 
+        #====row3====
+        lbl_email=Label(self.root,text="Email",font=("goudy old style",15),bg="white").place(x=50,y=230)
+        lbl_password=Label(self.root,text="Password",font=("goudy old style",15),bg="white").place(x=350,y=230)
+        lbl_usertype=Label(self.root,text="User Type",font=("goudy old style",15),bg="white").place(x=750,y=230)
+        
+        
+        txt_email=Entry(self.root,textvariable=self.var_email,font=("goudy old style",15),bg="lightyellow").place(x=150,y=230,width=180)
+        txt_password=Entry(self.root,textvariable=self.var_password,font=("goudy old style",15),bg="lightyellow").place(x=500,y=230,width=180)
+        txt_usertype=Entry(self.root,textvariable=self.var_utype,font=("goudy old style",15),bg="white").place(x=850,y=230,width=180)
+        cmb_usertype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Select","Admin","Employee"),state="readonly",justify=CENTER,font=("goudy old style",15))
+        cmb_usertype.place(x=850,y=230,width=180)
+        cmb_usertype.current(0)
+
+        
 
 
 
