@@ -15,7 +15,7 @@ class employeeClass:
         self.var_searchby=StringVar()
         self.var_searchtxt=StringVar()
 
-        self.var_emp_id=StringVar()
+        self.var_eid=StringVar()
         self.var_name=StringVar()
         self.var_email=StringVar()
         self.var_address=StringVar()
@@ -54,7 +54,7 @@ class employeeClass:
         lbl_contact=Label(self.root,text="Contact",font=("goudy old style",15),bg="white").place(x=750,y=150)
         
         
-        txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("goudy old style",15),bg="lightyellow").place(x=150,y=150,width=180)
+        txt_empid=Entry(self.root,textvariable=self.var_eid,font=("goudy old style",15),bg="lightyellow").place(x=150,y=150,width=180)
         
         txt_gender=Entry(self.root,textvariable=self.var_gender,font=("goudy old style",15),bg="white").place(x=500,y=150,width=180)
         cmb_gender=ttk.Combobox(self.root,textvariable=self.var_gender,values=("Select","Male","Female","Other"),state="readonly",justify=CENTER,font=("goudy old style",15))
@@ -107,12 +107,12 @@ class employeeClass:
         scroll_x=Scrollbar(emp_frame,orient=HORIZONTAL)
         scroll_y=Scrollbar(emp_frame,orient=VERTICAL)
 
-        self.employee_table=ttk.Treeview(emp_frame,columns=("EMP_ID","Name","Email","Gender","Contact","D.O.B","D.O.J","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        self.employee_table=ttk.Treeview(emp_frame,columns=("eid","Name","Email","Gender","Contact","D.O.B","D.O.J","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
         scroll_x.config(command=self.employee_table.xview)
         scroll_y.config(command=self.employee_table.yview)
-        self.employee_table.heading("EMP_ID",text="Emp ID")
+        self.employee_table.heading("eid",text="Emp ID")
         self.employee_table.heading("Name",text="Name")
         self.employee_table.heading("Email",text="Email")
         self.employee_table.heading("Gender",text="Gender")
@@ -126,7 +126,7 @@ class employeeClass:
 
         self.employee_table["show"]="headings"
 
-        self.employee_table.column("EMP_ID",width=100)
+        self.employee_table.column("eid",width=100)
         self.employee_table.column("Name",width=100)
         self.employee_table.column("Email",width=100)
         self.employee_table.column("Gender",width=100)
@@ -146,16 +146,16 @@ class employeeClass:
         cur=con.cursor()
 
         try:
-            if self.var_emp_id.get()=="":
+            if self.var_eid.get()=="":
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
-                cur.execute("select * from employee where emp_id=?",(self.var_emp_id.get(),))
+                cur.execute("select * from employee where eid=?",(self.var_eid.get(),))
                 row=cur.fetchone()
                 if row!=None:
                     messagebox.showerror("Error","Employee ID already present, try different",parent=self.root)
                 else:
-                    cur.execute("Insert into employee(EMP_ID,Name,Email,Gender,Contact,D.O.B,D.O.J,Password,Usertype,Address,Salary) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
-                            self.var_emp_id.get(),
+                    cur.execute("Insert into employee(eid,Name,Email,Gender,Contact,D.O.B,D.O.J,Password,Usertype,Address,Salary) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
+                            self.var_eid.get(),
                             self.var_name.get(),
                             self.var_email.get(),
                             self.var_gender.get(),
