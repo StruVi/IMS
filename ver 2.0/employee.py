@@ -5,7 +5,7 @@ class employeeClass:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
-        self.root.title("Employee Database")
+        self.root.title("Inventory Management System")
         self.root.config(bg="white")
         self.root.focus_force()
         
@@ -24,6 +24,7 @@ class employeeClass:
         self.var_doj=StringVar()
         self.var_password=StringVar()
         self.var_utype=StringVar()
+        self.var_salary=StringVar()
 
         #====SearchFrame====
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
@@ -84,6 +85,12 @@ class employeeClass:
         cmb_usertype.place(x=850,y=230,width=180)
         cmb_usertype.current(0)
 
+        #====row4====
+        lbl_address=Label(self.root,text="Address",font=("goudy old style",15),bg="white").place(x=50,y=270)
+        lbl_salary=Label(self.root,text="Salary",font=("goudy old style",15),bg="white").place(x=350,y=270)
+        
+        self.txt_address=Text(self.root,font=("goudy old style",15),bg="lightyellow").place(x=150,y=270,width=180)
+        txt_salary=Entry(self.root,textvariable=self.var_salary,font=("goudy old style",15),bg="lightyellow").place(x=500,y=270,width=180)
         
 
 
