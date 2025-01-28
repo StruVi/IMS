@@ -164,9 +164,14 @@ class employeeClass:
                             self.var_doj.get(),
                             self.var_password.get(),
                             self.var_utype.get(),
+
                             self.txt_address.get("1.0",END),
+
                             self.var_salary.get()
                     ))
+                    con.commit()
+                    messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
+                    
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
         
