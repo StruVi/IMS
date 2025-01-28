@@ -147,8 +147,26 @@ class employeeClass:
 
         try:
             if self.var_emp_id.get()=="":
-                messagebox.showerror("Error","Employee ID is be required",parent=self.root)
-
+                messagebox.showerror("Error","Employee ID is required",parent=self.root)
+            else:
+                cur.execute("select * from employee where emp_id=?",(self.var_emp_id.get(),))
+                row=cur.fetchone()
+                if row!=None:
+                    messagebox.showerror("Error","Employee ID already present, try different",parent=self.root)
+                else:
+                    cur.execute("Insert into employee(EMP_ID,Name,Email,Gender,Contact,D.O.B,D.O.J,Password,Usertype,Address,Salary) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
+                            self.var_emp_id.get(),
+                            self.var_name.get(),
+                            self.var_email.get(),
+                            self.var_gender.get(),
+                            self.var_contact.get(),
+                            self.var_dob.get(),
+                            self.var_doj.get(),
+                            self.var_password.get(),
+                            self.var_utype.get(),
+                            self.txt_address.get("1.0",END),
+                            self.var_salary.get()
+                    ))
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
         
