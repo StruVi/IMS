@@ -45,7 +45,19 @@ class employeeClass:
         title=Label(self.root,text="Employee Details",font=("goudy old style",20),bg="#0f4d7d",fg="white").place(x=0,y=90,width=1100,height=35)
 
         #====ContentFrame====
+        lbl_empid=Label(self.root,text="Emp ID",font=("goudy old style",15),bg="white").place(x=50,y=150)
+        lbl_gender=Label(self.root,text="Gender",font=("goudy old style",15),bg="white").place(x=350,y=150)
+        lbl_contact=Label(self.root,text="Contact",font=("goudy old style",15),bg="white").place(x=750,y=150)
         
+        
+        txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("goudy old style",15),bg="white").place(x=150,y=150,width=180)
+        txt_gender=Entry(self.root,textvariable=self.var_gender,font=("goudy old style",15),bg="white").place(x=500,y=150,width=180)
+        txt_contact=Entry(self.root,textvariable=self.var_contact,font=("goudy old style",15),bg="white").place(x=850,y=150,width=180)
+
+
+
+
+
 
 if __name__=="__main__":
     root=Tk()
