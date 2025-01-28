@@ -1,6 +1,7 @@
 from tkinter import*
 from PIL import Image,ImageTk #pip install pillow
 from tkinter import ttk
+import sqlite3
 class employeeClass:
     def __init__(self,root):
         self.root=root
@@ -139,7 +140,18 @@ class employeeClass:
         
         self.employee_table.pack(fill=BOTH,expand=1)
               
-    
+    #====
+    def add(self):
+        con=sqlite3.connect(database=r"ims.db")
+        cur=con.cursor()
+        try:
+            cur.execute("insert into employee (emp_id,name
+
+        except
+
+
+
+
 if __name__=="__main__":
     root=Tk()
     obj=employeeClass(root)
