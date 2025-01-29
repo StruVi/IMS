@@ -107,7 +107,7 @@ class employeeClass:
         scroll_x=Scrollbar(emp_frame,orient=HORIZONTAL)
         scroll_y=Scrollbar(emp_frame,orient=VERTICAL)
 
-        self.employee_table=ttk.Treeview(emp_frame,columns=("eid","Name","Email","Gender","Contact","D.O.B","D.O.J","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        self.employee_table=ttk.Treeview(emp_frame,columns=("eid","Name","Email","Gender","Contact","DOB","DOJ","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
         scroll_x.config(command=self.employee_table.xview)
@@ -117,8 +117,8 @@ class employeeClass:
         self.employee_table.heading("Email",text="Email")
         self.employee_table.heading("Gender",text="Gender")
         self.employee_table.heading("Contact",text="Contact")
-        self.employee_table.heading("D.O.B",text="D.O.B")
-        self.employee_table.heading("D.O.J",text="D.O.J")
+        self.employee_table.heading("DOB",text="DOB")
+        self.employee_table.heading("DOJ",text="DOJ")
         self.employee_table.heading("Password",text="Password")
         self.employee_table.heading("User-type",text="User-type")
         self.employee_table.heading("Address",text="Address")
@@ -131,8 +131,8 @@ class employeeClass:
         self.employee_table.column("Email",width=100)
         self.employee_table.column("Gender",width=100)
         self.employee_table.column("Contact",width=100)
-        self.employee_table.column("D.O.B",width=100)
-        self.employee_table.column("D.O.J",width=100)
+        self.employee_table.column("DOB",width=100)
+        self.employee_table.column("DOJ",width=100)
         self.employee_table.column("Password",width=100)
         self.employee_table.column("User-type",width=100)
         self.employee_table.column("Address",width=100)
@@ -142,7 +142,7 @@ class employeeClass:
               
     #====
     def add(self):
-        con=sqlite3.connect(database=r"ims.db")
+        con=sqlite3.connect(database="ims.db")
         cur=con.cursor()
 
         # Check if Employee ID already exists
@@ -151,10 +151,7 @@ class employeeClass:
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
                 # Insert employee data into the database
-                cur.execute
-                (
-                    """INSERT INTO employee (eid, Name, Email, Gender, Contact, "D.O.B", "D.O.J", Password, Usertype, Address, Salary) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                cur.execute("""INSERT INTO employee (eid, Name, Email, Gender, Contact, "DOB", "DOJ", Password, Usertype, Address, Salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                     (
                         self.var_eid.get(),
                         self.var_name.get(),
@@ -170,7 +167,6 @@ class employeeClass:
                     ),
                 )
                 con.commit()
-                self.show()  # Refresh table
                 messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
                     
         except Exception as ex:
