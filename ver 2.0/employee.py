@@ -139,8 +139,10 @@ class employeeClass:
         self.employee_table.column("Salary",width=100)
         
         self.employee_table.pack(fill=BOTH,expand=1)
+
+        self.show()
               
-    #====
+    #=======================Database Functions=======================
     def add(self):
         con=sqlite3.connect(database="ims.db")
         cur=con.cursor()
@@ -168,11 +170,29 @@ class employeeClass:
                 )
                 con.commit()
                 messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
-                    
+                self.show()   
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
         
-        
+    def show(self):
+        con=sqlite3.connect(database="ims.db")
+        cur=con.cursor()
+        try:
+            cur.execute("SELECT * FROM employee")
+            rows=cur.fetchall()
+            self.employee_table.delete(*self.employee_table.get_children())
+            for row in rows:
+                self.employee_table.insert("",END,values=row)
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
+
+
+
+#=========================================================================================================
+
+
+
+
 if __name__=="__main__":
     root=Tk()
     obj=employeeClass(root)
