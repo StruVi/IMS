@@ -139,6 +139,7 @@ class employeeClass:
         self.employee_table.column("Salary",width=100)
         
         self.employee_table.pack(fill=BOTH,expand=1)
+        self.employee_table.bind("<ButtonRelease-1>",self.get_data)
 
         self.show()
               
@@ -160,11 +161,13 @@ class employeeClass:
                         self.var_email.get(),
                         self.var_gender.get(),
                         self.var_contact.get(),
+
                         self.var_dob.get(),
                         self.var_doj.get(),
+
                         self.var_password.get(),
                         self.var_utype.get(),
-                        self.txt_address.get("1.0", END).strip(),
+                        self.txt_address.get('1.0', END),
                         self.var_salary.get(),
                     ),
                 )
@@ -185,8 +188,29 @@ class employeeClass:
                 self.employee_table.insert("",END,values=row)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
+   
+    def get_data(self,ev):
+        f=self.employee_table.focus()
+        content=(self.employee_table.item(f))
+        row=content['values']
+        
+        #print(row)
 
+        self.var_eid.set(row[0])
+        self.var_name.set(row[1])
+        self.var_email.set(row[2])
+        self.var_gender.set(row[3])
+        self.var_contact.set(row[4])
 
+        self.var_dob.set(row[5])
+        self.var_doj.set(row[6])
+
+        self.var_password.set(row[7])
+        self.var_utype.set(row[8])
+        self.txt_address.delete('1.0', END)
+        self.txt_address.insert(END, row[9])
+        self.var_salary.set(row[10])
+                
 
 #=========================================================================================================
 
