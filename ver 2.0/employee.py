@@ -97,7 +97,7 @@ class employeeClass:
         #====ButtonFrame====
         btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="#2196f3",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=28)
         btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=28)
-        btn_delete=Button(self.root,text="Delete",font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=28)
+        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=28)
         btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=28)
         
         #====Employee Table====
@@ -259,6 +259,34 @@ class employeeClass:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
        
                 
+    def delete(self):
+        con=sqlite3.connect(database="ims.db")
+        cur=con.cursor()
+
+        try:
+            if self.var_eid.get()=="":
+                messagebox.showerror("Error","Employee ID is required",parent=self.root)
+            else:
+                cur.execute("Select * from employee where eid=?",(self.var_eid.get(),))
+                row=cur.fetchone()
+                # Insert employee data into the database
+                if row==None:
+                    messagebox.showerror("Error", "Invalid Employee ID",parent=self.root)
+                else:
+                    op=messagebox.askyesno("Confirm","Do you really want to delete?",parent=self.root)
+                    if op==True:
+                        cur.execute("delete from employee where eid=?",(self.var_eid.get(),))
+                        con.commit()
+                        self.show()
+                    else:
+                        messagebox.showinfo("Delete","Employee Deleted Successfully",parent=self.root)
+              
+            
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to: {str(ex)}")
+       
+
+
 
 #=========================================================================================================
 
