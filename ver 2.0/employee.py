@@ -15,7 +15,7 @@ class employeeClass:
         self.var_searchby=StringVar()
         self.var_searchtxt=StringVar()
 
-        self.var_eid=StringVar()
+        self.var_emp_id=StringVar()
         self.var_name=StringVar()
         self.var_email=StringVar()
         self.var_address=StringVar()
@@ -54,7 +54,7 @@ class employeeClass:
         lbl_contact=Label(self.root,text="Contact",font=("goudy old style",15),bg="white").place(x=750,y=150)
         
         
-        txt_empid=Entry(self.root,textvariable=self.var_eid,font=("goudy old style",15),bg="lightyellow").place(x=150,y=150,width=180)
+        txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("goudy old style",15),bg="lightyellow").place(x=150,y=150,width=180)
         
         txt_gender=Entry(self.root,textvariable=self.var_gender,font=("goudy old style",15),bg="white").place(x=500,y=150,width=180)
         cmb_gender=ttk.Combobox(self.root,textvariable=self.var_gender,values=("Select","Male","Female","Other"),state="readonly",justify=CENTER,font=("goudy old style",15))
@@ -107,7 +107,7 @@ class employeeClass:
         scroll_x=Scrollbar(emp_frame,orient=HORIZONTAL)
         scroll_y=Scrollbar(emp_frame,orient=VERTICAL)
 
-        self.employee_table=ttk.Treeview(emp_frame,columns=("eid","Name","Email","Gender","Contact","DOB","DOJ","Password","User-type","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        self.employee_table=ttk.Treeview(emp_frame,columns=("eid","Name","Email","Gender","Contact","dob","doj","Password","utype","Address","Salary"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
         scroll_x.config(command=self.employee_table.xview)
@@ -117,10 +117,10 @@ class employeeClass:
         self.employee_table.heading("Email",text="Email")
         self.employee_table.heading("Gender",text="Gender")
         self.employee_table.heading("Contact",text="Contact")
-        self.employee_table.heading("DOB",text="DOB")
-        self.employee_table.heading("DOJ",text="DOJ")
+        self.employee_table.heading("dob",text="D.O.B")
+        self.employee_table.heading("doj",text="D.O.J")
         self.employee_table.heading("Password",text="Password")
-        self.employee_table.heading("User-type",text="User-type")
+        self.employee_table.heading("utype",text="User-type")
         self.employee_table.heading("Address",text="Address")
         self.employee_table.heading("Salary",text="Salary")
 
@@ -131,10 +131,10 @@ class employeeClass:
         self.employee_table.column("Email",width=100)
         self.employee_table.column("Gender",width=100)
         self.employee_table.column("Contact",width=100)
-        self.employee_table.column("DOB",width=100)
-        self.employee_table.column("DOJ",width=100)
+        self.employee_table.column("dob",width=100)
+        self.employee_table.column("doj",width=100)
         self.employee_table.column("Password",width=100)
-        self.employee_table.column("User-type",width=100)
+        self.employee_table.column("utype",width=100)
         self.employee_table.column("Address",width=100)
         self.employee_table.column("Salary",width=100)
         
@@ -150,33 +150,34 @@ class employeeClass:
 
         # Check if Employee ID already exists
         try:
-            if self.var_eid.get()=="":
+            if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
-                cur.execute("Select * from employee where eid=?",(self.var_eid.get(),))
+                cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 # Insert employee data into the database
                 if row!=None:
-                    messagebox.showerror("Error", "This Employee ID is alreafy assigned, try different a one.",parent=self.root)
+                    messagebox.showerror("Error", "This Employee ID is already assigned, try different a one.",parent=self.root)
                 else:
-                    cur.execute("""INSERT INTO employee (eid, Name, Email, Gender, Contact, "DOB", "DOJ", Password, Usertype, Address, Salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""),
-                (
-                    (
-                        self.var_eid.get(),
-                        self.var_name.get(),
-                        self.var_email.get(),
-                        self.var_gender.get(),
-                        self.var_contact.get(),
+                    cur.execute("""INSERT INTO employee (eid, Name, Email, Gender, Contact, dob, doj, Password, utype, Address, Salary) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+                                ,(
+                                    
+                                    self.var_name.get(),
+                                    self.var_email.get(),
+                                    self.var_gender.get(),
+                                    self.var_contact.get(),
 
-                        self.var_dob.get(),
-                        self.var_doj.get(),
+                                    self.var_dob.get(),
+                                    self.var_doj.get(),
 
-                        self.var_password.get(),
-                        self.var_utype.get(),
-                        self.txt_address.get('1.0', END),
-                        self.var_salary.get(),
-                    ),
-                )
+                                    self.var_password.get(),
+                                    self.var_utype.get(),
+                                    self.txt_address.get('1.0', END),
+                                    self.var_salary.get(),
+                                    self.var_emp_id.get(),
+                                )
+                                )
+                        
                 con.commit()
                 messagebox.showinfo("Success","Employee Added Successfully",parent=self.root)
                 self.show()   
@@ -191,7 +192,7 @@ class employeeClass:
             rows=cur.fetchall()
             self.employee_table.delete(*self.employee_table.get_children())
             for row in rows:
-                self.employee_table.insert("",END,values=row)
+                self.employee_table.insert('',END,values=row)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
    
@@ -200,9 +201,9 @@ class employeeClass:
         content=(self.employee_table.item(f))
         row=content['values']
         
-        #print(row)
+        print(row)
 
-        self.var_eid.set(row[0])
+        self.var_emp_id.set(row[0])
         self.var_name.set(row[1])
         self.var_email.set(row[2])
         self.var_gender.set(row[3])
@@ -224,34 +225,30 @@ class employeeClass:
 
         # Check if Employee ID already exists
         try:
-            if self.var_eid.get()=="":
+            if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
-                cur.execute("Select * from employee where eid=?",(self.var_eid.get(),))
+                cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 # Insert employee data into the database
                 if row==None:
                     messagebox.showerror("Error", "Invalid Employee ID",parent=self.root)
                 else:
-                    cur.execute
-                    ("""Update employee set Name=?, Email=?, Gender=?, Contact=?, "DOB"=?, "DOJ"=?, Password=?, Usertype=?, Address=?, Salary=? where eid=?""",
-                        (
-                            self.var_name.get(),
-                            self.var_email.get(),
-                            self.var_gender.get(),
-                            self.var_contact.get(),
+                    cur.execute("Update employee set Name=?, Email=?, Gender=?, Contact=?, dob=?, doj=?, Password=?, utype=?, Address=?, Salary=? where eid=?",(
+                        self.var_name.get(),
+                        self.var_email.get(),
+                        self.var_gender.get(),
+                        self.var_contact.get(),
 
-                            self.var_dob.get(),
-                            self.var_doj.get(),
+                        self.var_dob.get(),
+                        self.var_doj.get(),
 
-                            self.var_password.get(),
-                            self.var_utype.get(),
-                            self.txt_address.get('1.0', END),
-                            self.var_salary.get(),
-                            self.var_eid.get(),
-                     
-                        )
-                    )
+                        self.var_password.get(),
+                        self.var_utype.get(),
+                        self.txt_address.get('1.0', END),
+                        self.var_salary.get(),
+                        self.var_emp_id.get(),
+                    ))
                     con.commit()
                     messagebox.showinfo("Success","Employee Updated Successfully",parent=self.root)
                     self.show()   
@@ -264,10 +261,10 @@ class employeeClass:
         cur=con.cursor()
 
         try:
-            if self.var_eid.get()=="":
+            if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID is required",parent=self.root)
             else:
-                cur.execute("Select * from employee where eid=?",(self.var_eid.get(),))
+                cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 # Insert employee data into the database
                 if row==None:
@@ -275,11 +272,11 @@ class employeeClass:
                 else:
                     op=messagebox.askyesno("Confirm","Do you really want to delete?",parent=self.root)
                     if op==True:
-                        cur.execute("delete from employee where eid=?",(self.var_eid.get(),))
+                        cur.execute("delete from employee where eid=?",(self.var_emp_id.get(),))
                         con.commit()
                         self.show()
                     else:
-                        messagebox.showinfo("Delete","Employee Deleted Successfully",parent=self.root)
+                        messagebox.showinfo("Delete","Employee not deleted",parent=self.root)
               
             
         except Exception as ex:
