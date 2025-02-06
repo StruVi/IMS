@@ -98,7 +98,7 @@ class employeeClass:
         btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="#2196f3",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=28)
         btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=28)
         btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=28)
-        btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=28)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=28)
         
         #====Employee Table====
         emp_frame=Frame(self.root,bd=3,relief=RIDGE,bg="white")
@@ -282,6 +282,22 @@ class employeeClass:
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
        
+    def clear(self):
+        self.var_emp_id.set("")
+        self.var_name.set("")
+        self.var_email.set("")
+        self.var_gender.set("Select")
+        self.var_contact.set("")
+
+        self.var_dob.set("")
+        self.var_doj.set("")
+
+        self.var_password.set("")
+        self.var_utype.set("Select")
+        self.txt_address.delete("1.0",END)
+        self.var_salary.set("")
+        self.show()
+
 
 
 
