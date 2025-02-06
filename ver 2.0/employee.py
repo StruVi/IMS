@@ -161,7 +161,7 @@ class employeeClass:
                 else:
                     cur.execute("""INSERT INTO employee (eid, Name, Email, Gender, Contact, dob, doj, Password, utype, Address, Salary) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
                                 ,(
-                                    
+                                    self.var_emp_id.get(),
                                     self.var_name.get(),
                                     self.var_email.get(),
                                     self.var_gender.get(),
@@ -174,7 +174,7 @@ class employeeClass:
                                     self.var_utype.get(),
                                     self.txt_address.get('1.0', END),
                                     self.var_salary.get(),
-                                    self.var_emp_id.get(),
+                                    
                                 )
                                 )
                         
@@ -283,6 +283,7 @@ class employeeClass:
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
        
+    
     def clear(self):
         self.var_emp_id.set("")
         self.var_name.set("")
