@@ -274,7 +274,8 @@ class employeeClass:
                     if op==True:
                         cur.execute("delete from employee where eid=?",(self.var_emp_id.get(),))
                         con.commit()
-                        self.show()
+                        messagebox.showinfo("Delete","Employee Deleted Successfully",parent=self.root)
+                        self.clear()
                     else:
                         messagebox.showinfo("Delete","Employee not deleted",parent=self.root)
               
